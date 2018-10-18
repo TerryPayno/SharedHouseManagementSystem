@@ -18,7 +18,7 @@
         }
         vm.PrintStorage = function () {
             
-            console.log("This is in the product Controller " + userData);
+            console.info("This is in the product Controller " + userData);
         }
         var ChargeObjList = [];
         vm.CreateNewProduct = function (HouseMateFName) {

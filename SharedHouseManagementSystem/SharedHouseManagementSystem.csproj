@@ -248,6 +248,7 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>UsersTable.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserBoughtProductsData.cs" />
     <Compile Include="Models\UserCredentials.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\UsersTable.Context.cs">
@@ -282,6 +283,8 @@
     <Content Include="app\components\PurchasedProduct\PurchasedProduct.js" />
     <Content Include="app\components\toolbar\toolbar.html" />
     <Content Include="app\components\toolbar\toolbar.js" />
+    <Content Include="app\components\UserBoughtProducts\UserBoughtProducts.html" />
+    <Content Include="app\components\UserBoughtProducts\UserBoughtProducts.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

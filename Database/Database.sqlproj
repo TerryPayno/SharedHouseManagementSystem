@@ -70,5 +70,6 @@
     <Build Include="Stored Procedures\spAddNewUser.sql" />
     <Build Include="Stored Procedures\spGetAllHouseMates.sql" />
     <Build Include="Stored Procedures\spGetHashedPassword.sql" />
+    <Build Include="Stored Procedures\spGetUserBoughtProducts.sql" />
   </ItemGroup>
 </Project>

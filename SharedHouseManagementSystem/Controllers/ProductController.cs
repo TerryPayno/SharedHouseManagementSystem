@@ -5,6 +5,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.SqlClient;
+using SharedHouseManagementSystem.Repository;
+using System.Data;
+using Dapper;
 
 namespace SharedHouseManagementSystem.Controllers
 {
@@ -52,5 +56,19 @@ namespace SharedHouseManagementSystem.Controllers
 
             return "Yep";
         }
+        [HttpPost, Route("GetUserBoughtProducts")]
+        public string GetUserBoughtProducts(LoginReturn userData)
+        {
+            Database db = new Database();
+            SqlConnection myConnection = new SqlConnection();
+            myConnection = db.connect();
+
+            UserBoughtProductsData UserBought = new UserBoughtProductsData();
+            var UserBoughtvar = myConnection.Query<UserBoughtProductsData>("spGetUserBoughtProducts", new { UserID = userData.UserID },
+                commandType: CommandType.StoredProcedure);
+
+            return "Pro ;)";
+        }
+            
     }
 }

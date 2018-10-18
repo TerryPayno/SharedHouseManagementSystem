@@ -19,6 +19,11 @@ baseApp.config(['$stateProvider', '$locationProvider', '$urlRouterProvider',
                 templateUrl: "/app/components/PurchasedProduct/PurchasedProduct.html",
                 controller: "PurchasedProductCtrl",
                 controllerAs: 'vm'
+            }).state("userbuy", {
+                url: '/userbuy',
+                templateUrl: "/app/components/UserBoughtProducts/UserBoughtProducts.html",
+                controller: "UserBoughtProductsCtrl",
+                controllerAs: 'vm'
             });
 
         $urlRouterProvider.otherwise('/');
