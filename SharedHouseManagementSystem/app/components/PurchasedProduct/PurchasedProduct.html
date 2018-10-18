@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>New Product</h1>
+    <input ng-model="vm.Name" placeholder="Name" />
+    <input ng-model="vm.quantity" placeholder="quantity"/>
+    <input ng-model="vm.Description" placeholder="Description"/>
+    <input ng-model="vm.Price" placeholder="Price" />
+    <input ng-model="vm.ProductGroup" placeholder="ProductGroup"/>
+    
+    <div>
+        <h2>HouseMates</h2>
+        <ul ng-repeat="HouseMate in vm.HouseMates">
+            <li>{{HouseMate.FirstName}}  {{HouseMate.LastName}} <input type="checkbox" ng-model="HouseMate.IsPaying"></li>
+
+        </ul>
+        <button ng-click="vm.CreateObjList()">Submit</button>
+
+        <button ng-click="vm.PrintStorage()">Test ID Storage</button>
+    </div>
+</body>
+</html>
