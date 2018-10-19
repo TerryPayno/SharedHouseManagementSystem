@@ -10,14 +10,12 @@
     function UserBoughtProductsCtrl(ProductFactory, UserFactory, LoginService) {
         var vm = this;
         var userData = LoginService.getUser();
-        alert(userData.UserID);
+        alert(userData);
         vm.GetProducts = function () {
-            var userData = LoginService.getUser();
+
             ProductFactory.GetUserBoughtProducts(userData).then(function (resp) {
-                console.info(resp);
-
+                    console.info(resp);
             });
-
         }
 
 

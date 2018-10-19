@@ -12,7 +12,10 @@
             return $http.post('api/Product/CreateCharge', ChargeObj);
         }
         ProductFactory.GetUserBoughtProducts = function (userData) {
-            return $http.post('api/Product/GetUserBoughtProducts', userData);
+            var userInfo = {
+                UserID: userData
+            }
+            return $http.post('api/Product/GetUserBoughtProducts', userInfo);
         }
 
         return ProductFactory;

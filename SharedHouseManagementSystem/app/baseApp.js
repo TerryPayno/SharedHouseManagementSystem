@@ -30,7 +30,7 @@ baseApp.config(['$stateProvider', '$locationProvider', '$urlRouterProvider',
 
         $locationProvider.hashPrefix('');
 
-        $locationProvider.html5Mode(true);
+        //$locationProvider.html5Mode(true);
 
 
 
