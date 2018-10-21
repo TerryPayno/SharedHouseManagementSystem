@@ -10,15 +10,22 @@
     function UserBoughtProductsCtrl(ProductFactory, UserFactory, LoginService) {
         var vm = this;
         var userData = LoginService.getUser();
-        alert(userData);
-        vm.GetProducts = function () {
 
+        vm.userBoughtProductList = [];
+
+
+
+
+        function init() {
             ProductFactory.GetUserBoughtProducts(userData).then(function (resp) {
-                    console.info(resp);
+                _.each(resp.data, function (prod) {
+
+                    vm.userBoughtProductList.push(prod);
+
+                });
             });
         }
-
-
-
+        init()
     }
+
 })();

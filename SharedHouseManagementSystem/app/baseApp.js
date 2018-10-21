@@ -6,23 +6,43 @@ baseApp.config(['$stateProvider', '$locationProvider', '$urlRouterProvider',
         $stateProvider
             .state("dashboard", {
                 url: '/dashboard',
-                templateUrl: "/app/components/Dashboard/dashboard.html",
+                templateUrl: "app/components/Dashboard/dashboard.html",
                 controller: "DashboardCtrl",
                 controllerAs: 'vm'
             }).state("login", {
                 url: '/login',
-                templateUrl: "/app/components/Login/Login.html",
+                templateUrl: "app/components/Login/Login.html",
                 controller: "LoginCtrl",
                 controllerAs: 'vm'
             }).state("products", {
                 url: '/products',
-                templateUrl: "/app/components/PurchasedProduct/PurchasedProduct.html",
+                templateUrl: "app/components/PurchasedProduct/PurchasedProduct.html",
                 controller: "PurchasedProductCtrl",
                 controllerAs: 'vm'
             }).state("userbuy", {
                 url: '/userbuy',
-                templateUrl: "/app/components/UserBoughtProducts/UserBoughtProducts.html",
+                templateUrl: "app/components/UserBoughtProducts/UserBoughtProducts.html",
                 controller: "UserBoughtProductsCtrl",
+                controllerAs: 'vm'
+            }).state("charges", {
+                url: '/charges',
+                templateUrl: "app/components/Charges/Charges.html",
+                controller: "chargesCtrl",
+                controllerAs: 'vm'
+            }).state("ResetPassword", {
+                url: '/ResetPassword',
+                templateUrl: "app/components/ResetPassword/ResetPassword.html",
+                controller: "ResetpasswordCtrl",
+                controllerAs: 'vm'
+            }).state("ResetPasswordAction", {
+                url: '/ResetPasswordAction/{id}',
+                templateUrl: "app/components/ResetPassword/ResetPasswordAction.html",
+                controller: "ResetpasswordActionCtrl",
+                controllerAs: 'vm'
+            }).state("Rota", {
+                url: '/Rota',
+                templateUrl: "app/components/Rota/Rota.html",
+                controller: "RotaCtrl",
                 controllerAs: 'vm'
             });
 
@@ -30,8 +50,8 @@ baseApp.config(['$stateProvider', '$locationProvider', '$urlRouterProvider',
 
         $locationProvider.hashPrefix('');
 
-        //$locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true);
 
 
-
-    }]);
+    }
+    ]);

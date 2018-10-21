@@ -71,5 +71,9 @@
     <Build Include="Stored Procedures\spGetAllHouseMates.sql" />
     <Build Include="Stored Procedures\spGetHashedPassword.sql" />
     <Build Include="Stored Procedures\spGetUserBoughtProducts.sql" />
+    <Build Include="Stored Procedures\spGetCharges.sql" />
+    <Build Include="Stored Procedures\spResetPasswordRequest.sql" />
+    <Build Include="Tables\ResetPasswordRequestTable.sql" />
+    <Build Include="Stored Procedures\spChangePassword.sql" />
   </ItemGroup>
 </Project>

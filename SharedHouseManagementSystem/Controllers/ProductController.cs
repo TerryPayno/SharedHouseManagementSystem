@@ -57,17 +57,17 @@ namespace SharedHouseManagementSystem.Controllers
             return "Yep";
         }
         [HttpPost, Route("GetUserBoughtProducts")]
-        public string GetUserBoughtProducts(LoginReturn userInfo)
+        public IEnumerable<UserBoughtProductsData> GetUserBoughtProducts(LoginReturn userInfo)
         {
             Database db = new Database();
             SqlConnection myConnection = new SqlConnection();
             myConnection = db.connect();
 
             UserBoughtProductsData UserBought = new UserBoughtProductsData();
-            var UserBoughtvar = myConnection.Query<UserBoughtProductsData>("spGetUserBoughtProducts", new { UserID = userInfo.UserID },
+            IEnumerable<UserBoughtProductsData> UserBoughtvar = myConnection.Query<UserBoughtProductsData>("spGetUserBoughtProducts", new { UserID = userInfo.UserID },
                 commandType: CommandType.StoredProcedure);
 
-            return "Pro ;)";
+            return UserBoughtvar;
         }
             
     }

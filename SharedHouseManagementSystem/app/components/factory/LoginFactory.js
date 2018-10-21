@@ -15,6 +15,20 @@
         LoginFactory.CreateNewAccount = function (User) {
             return $http.post('api/Login/CreateNewAccount', User);
         }
+        LoginFactory.ResetPasswordRequest = function (username) {
+            var userInfo = {
+                Username: username,
+                Password: null
+            }
+            return $http.post('api/Login/ResetPasswordRequest', userInfo);
+        }
+        LoginFactory.ResetPasswordAction = function (newPass, GUID) {
+            var Restobj = {
+                newPassword: newPass,
+                GUID: GUID
+            }
+            return $http.post('api/Login/ResetPasswordAction', Restobj);
+        }
         return LoginFactory;
     }
 })();

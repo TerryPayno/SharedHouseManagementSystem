@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Charges Page</h1>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Charge ID</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Email</th>
+                    <th>Price</th>
+                    <th>Product ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Product Group</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="(key, values) in vm.ChargesList">
+                    <td>{{values.ChargeID}}</td>
+                    <td>{{values.FirstName}}</td>
+                    <td>{{values.LastName}}</td>
+                    <td>{{values.Email}}</td>
+                    <td>{{values.Price}}</td>
+                    <td>{{values.ProductID}}</td>
+                    <td>{{values.Name}}</td>
+                    <td>{{values.Description}}</td>
+                    <td>{{values.ProductGroup}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

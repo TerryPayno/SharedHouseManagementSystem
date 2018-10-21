@@ -161,6 +161,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Processing\Hashing.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -193,14 +194,17 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ChargeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ResetPassword.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Charge.cs" />
     <Compile Include="Models\Charges.cs" />
     <Compile Include="Models\ChargeTable.Context.cs">
       <AutoGen>True</AutoGen>
@@ -236,9 +240,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PasswordResetobj.cs" />
     <Compile Include="Models\ProductsBought.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Restobj.cs" />
     <Compile Include="Models\spGetAllHouseMates_Result.cs">
       <DependentUpon>UsersTable.tt</DependentUpon>
     </Compile>
@@ -271,16 +277,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\baseApp.js" />
+    <Content Include="app\components\Charges\Charges.html" />
+    <Content Include="app\components\Charges\Charges.js" />
     <Content Include="app\components\Dashboard\dashboard.html" />
     <Content Include="app\components\Dashboard\dashboard.js" />
+    <Content Include="app\components\factory\ChargesFactory.js" />
     <Content Include="app\components\factory\LoginFactory.js" />
-    <Content Include="app\components\factory\ProductFactorry.js" />
+    <Content Include="app\components\factory\ProductFactory.js" />
     <Content Include="app\components\factory\UserFactory.js" />
     <Content Include="app\components\Login\Login.html" />
     <Content Include="app\components\Login\Login.js" />
     <Content Include="app\components\Login\LoginService.js" />
     <Content Include="app\components\PurchasedProduct\PurchasedProduct.html" />
     <Content Include="app\components\PurchasedProduct\PurchasedProduct.js" />
+    <Content Include="app\components\ResetPassword\Resetpassword.js" />
+    <Content Include="app\components\ResetPassword\ResetPassword.html" />
+    <Content Include="app\components\ResetPassword\ResetPasswordAction.html" />
+    <Content Include="app\components\ResetPassword\ResetPasswordAction.js" />
+    <Content Include="app\components\Rota\Rota.css" />
+    <Content Include="app\components\Rota\Rota.html" />
+    <Content Include="app\components\Rota\Rota.js" />
     <Content Include="app\components\toolbar\toolbar.html" />
     <Content Include="app\components\toolbar\toolbar.js" />
     <Content Include="app\components\UserBoughtProducts\UserBoughtProducts.html" />

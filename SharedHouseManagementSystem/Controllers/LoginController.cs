@@ -10,6 +10,8 @@ using System.Data.SqlClient;
 using System.Data;
 using Dapper;
 using SharedHouseManagementSystem.Repository;
+using System.Net.Mail;
+using System.Text;
 
 namespace SharedHouseManagementSystem.Controllers
 {
@@ -90,6 +92,67 @@ namespace SharedHouseManagementSystem.Controllers
 
             return savedPasswordHash;
 
+        }
+        [HttpPost, Route("ResetPasswordRequest")]
+        public string ResetPasswordRequest(UserCredentials userInfo)
+        {
+            Database db = new Database();
+            SqlConnection myConnection = new SqlConnection();
+            myConnection = db.connect();
+
+            //Charge charges = new Charge();
+            var success = myConnection.Query<PasswordResetobj>("spResetPasswordRequest", new { Email = userInfo.Username },
+                commandType: CommandType.StoredProcedure).SingleOrDefault();
+
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("tgch.agularjs@gmail.com");
+            mail.To.Add(success.Email);
+            mail.Subject = "Reset password";
+            StringBuilder sbEmailBody = new StringBuilder();
+
+            sbEmailBody.Append("Click the Link you fucking Mong " + ",<br/><br/>");
+            sbEmailBody.Append("<a href=" + "http://localhost:2463/ResetPasswordAction/" + success.UniqueID + ">Reset Now</a>");
+
+
+            mail.IsBodyHtml = true;
+
+
+            mail.Body = sbEmailBody.ToString();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("tgch.agularjs@gmail.com", "Coffee123!");
+            SmtpServer.EnableSsl = true;
+
+            SmtpServer.Send(mail);
+
+            return "What the fuck am i doing :)";
+        }
+
+        [HttpPost, Route("ResetPasswordAction")]
+        public string ResetPasswordAction(Restobj newDetails)
+        {
+            byte[] salt;
+            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+            var pbkdf2 = new Rfc2898DeriveBytes(newDetails.newPassword, salt, 10000);
+            byte[] hash = pbkdf2.GetBytes(20);
+            byte[] hashBytes = new byte[36];
+            Array.Copy(salt, 0, hashBytes, 0, 16);
+            Array.Copy(hash, 0, hashBytes, 16, 20);
+
+
+
+            string savedPasswordHash = Convert.ToBase64String(hashBytes);
+            Database db = new Database();
+            SqlConnection myConnection = new SqlConnection();
+            myConnection = db.connect();
+
+            
+            myConnection.Query<Restobj>("spChangePassword", new { GUID = newDetails.GUID, NewPassword = savedPasswordHash },
+                commandType: CommandType.StoredProcedure).SingleOrDefault();
+
+
+
+            return "What the fuck am i doing :)";
         }
 
     }
