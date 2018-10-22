@@ -38,12 +38,15 @@
             I have paid my share
         </md-button>
         <h1>Cleaning Rota</h1>
-        <md-button class="md-accent"  href="/Rota">
+        <md-button class="md-accent" href="/Rota">
             Rota
         </md-button>
-        <h1>Login</h1>
-        <md-button class="md-accent" href="/login">
+        <h1>Account</h1>
+        <md-button class="md-accent" href="/login" ng-if="vm.LoginView">
             Login
+        </md-button>
+        <md-button class="md-accent" ng-click="vm.Logout()" ng-if="vm.LogOutView">
+            Log Out
         </md-button>
     </md-content>
 

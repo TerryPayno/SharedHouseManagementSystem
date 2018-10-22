@@ -6,8 +6,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="row" style="width:100%">
-            <div class="col-1" style="background-color:aqua">
+        <div class="row" style="width:100%; border-bottom: groove;">
+            <div class="col-1" style="background-color:aqua;">
                 <p>ROTA</p>
             </div>
             <div class="col" style="background-color:aliceblue">
@@ -32,58 +32,34 @@
                 <h1>Sun</h1>
             </div>
         </div>
-        <div class="row" style="width:100%; height:25%">
-            <div class="col-1" style="background-color:aqua">
-                <p>-AM-</p>
+        <div ng-repeat="x in vm.RotaRows" class="row" style="width:100%; height:25%; border-bottom: groove;">
+            <div class="col-1" style="background-color:aqua" contenteditable="{{vm.Editable}}">
+                #Time#
             </div>
-            <div class="col" style="background-color:aliceblue">
-                <p>Test</p>
+            <div class="col" style="background-color:aliceblue" contenteditable="{{vm.Editable}}">
+                Test
             </div>
-            <div class="col" style="background-color:antiquewhite">
-                <p>Test</p>
+            <div class="col" style="background-color:antiquewhite" contenteditable="{{vm.Editable}}">
+                Test
             </div>
-            <div class="col" style="background-color:aquamarine">
-                <p>Test</p>
+            <div class="col" style="background-color:aquamarine" contenteditable="{{vm.Editable}}">
+                Test
             </div>
-            <div class="col" style="background-color:azure">
-                <p>Test</p>
+            <div class="col" style="background-color:azure" contenteditable="{{vm.Editable}}">
+                Test
             </div>
-            <div class="col" style="background-color:cadetblue">
-                <p>Test</p>
+            <div class="col" style="background-color:cadetblue" contenteditable="{{vm.Editable}}">
+                Test
             </div>
-            <div class="col" style="background-color:cyan">
-                <p>Test</p>
+            <div class="col" style="background-color:cyan" contenteditable="{{vm.Editable}}">
+                Test
             </div>
-            <div class="col" style="background-color:darkturquoise">
-                <p>Test</p>
-            </div>
-        </div>
-        <div class="row" style="width:100%; height:25%">
-            <div class="col-1" style="background-color:aqua">
-                <p>-PM-</p>
-            </div>
-            <div class="col" style="background-color:aliceblue">
-                <h1>Test</h1>
-            </div>
-            <div class="col" style="background-color:antiquewhite">
-                <h1>Test</h1>
-            </div>
-            <div class="col" style="background-color:aquamarine">
-                <h1>Test</h1>
-            </div>
-            <div class="col" style="background-color:azure">
-                <h1>Test</h1>
-            </div>
-            <div class="col" style="background-color:cadetblue">
-                <h1>Test</h1>
-            </div>
-            <div class="col" style="background-color:cyan">
-                <h1>Test</h1>
-            </div>
-            <div class="col" style="background-color:darkturquoise">
-                <h1>Test</h1>
+            <div class="col" style="background-color:darkturquoise" contenteditable="{{vm.Editable}}">
+                Test
             </div>
         </div>
     </div>
+    <button ng-click="vm.AddNewRow()">Add New Time</button>
+    <button ng-click="vm.EnableEditing()">Edit</button>
 </body>
 </html>
