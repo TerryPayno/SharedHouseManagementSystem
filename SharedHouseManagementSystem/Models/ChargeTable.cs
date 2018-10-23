@@ -23,5 +23,6 @@ namespace SharedHouseManagementSystem.Models
         public Nullable<bool> IsPaying { get; set; }
         public Nullable<double> Price { get; set; }
         public Nullable<int> ProductID { get; set; }
+        public Nullable<bool>PaidShare { get; set; }
     }
 }

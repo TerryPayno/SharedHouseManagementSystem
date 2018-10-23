@@ -10,12 +10,15 @@
     function PurchasedProductCtrl(ProductFactory, UserFactory, LoginService) {
         var vm = this;
 
-        var userData = LoginService.getUser();
+        
+            
+
+       
         var User = {
-            UserID: userData.UserID,
-            Name: userData.Email,
-            HouseID: userData.HouseID
+            UserID: LoginService.getUser(),
+            HouseID: LoginService.getHouse()
         }
+        
         vm.PrintStorage = function () {
             
             console.info("This is in the product Controller " + userData);
@@ -50,12 +53,12 @@
         }
     
         function init() {
-
+            alert();
             UserFactory.GetHouseMates(User).then(function (resp) {
                 vm.HouseMates = [];
                 console.log(resp);
                 _.each(resp.data, function (HouseMate) {
-                    if (HouseMate.UserID !== User.UserID) {
+                    if (HouseMate.UserID !== parseInt(User.UserID)) {
                         vm.HouseMates.push(HouseMate);
                     }
                 });
@@ -63,8 +66,8 @@
                 console.log(vm.HouseMates);
             });
         }
-
         init();
+        
     }
 
 

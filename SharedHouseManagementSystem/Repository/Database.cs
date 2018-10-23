@@ -11,7 +11,7 @@ namespace SharedHouseManagementSystem.Repository
         public SqlConnection connect()
         {
 
-            SqlConnection myConnection = new SqlConnection("Integrated Security=True;server=(LocalDb)\\MSSQLLocalDB;" +
+            SqlConnection myConnection = new SqlConnection("Integrated Security=True;server=localhost\\SQLEXPRESS01;" +
                                "Trusted_Connection=yes;" +
                                "database=SHMS; " +
                                "connection timeout=30");

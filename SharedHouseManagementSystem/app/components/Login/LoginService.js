@@ -11,7 +11,9 @@
     function LoginService( ) {
 
         var CachedUser;
-
+        function getHouse() {
+            return localStorage.getItem("HouseID");
+        }
         function getUser() {
             return localStorage.getItem("UserID"); // I think that the reason that this is being returned as undifined is due to this being a service not a factory.
                                // Service is creating a new object everytime it is ceated therefor wiping the data from when it was used in the first controller
@@ -26,7 +28,8 @@
 
         return {
             setCachedUser: setCachedUser,
-            getUser: getUser
+            getUser: getUser,
+            getHouse: getHouse
         }
     }
 })();

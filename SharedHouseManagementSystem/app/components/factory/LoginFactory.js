@@ -22,6 +22,14 @@
             }
             return $http.post('api/Login/ResetPasswordRequest', userInfo);
         }
+        LoginFactory.AddNewHouse = function (PostCode, Street, HouseNum) {
+            var NewHouseData = {
+                PostCode: PostCode,
+                Street: Street,
+                HouseNum: HouseNum
+            }
+            return $http.post('api/Login/AddNewHouse', NewHouseData);
+        }
         LoginFactory.ResetPasswordAction = function (newPass, GUID) {
             var Restobj = {
                 newPassword: newPass,

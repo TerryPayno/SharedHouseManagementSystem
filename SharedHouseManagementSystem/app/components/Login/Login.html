@@ -12,4 +12,13 @@
 <input ng-model="vm.HouseID" />
 <button ng-click="vm.Login()">Login</button>
 <button ng-click="vm.CreateAccount()">New Account</button>
-<a href="/ResetPassword">Forgotten Password</a>
+<a href="/ResetPassword">Forgotten Password</a><br />
+
+<h1>New House</h1>
+<label>Post Code</label>
+<input ng-model="vm.PostCode" />
+<label>Street name</label>
+<input ng-model="vm.Street" />
+<label>House Number</label>
+<input ng-model="vm.HouseNum" />
+<button ng-click="vm.AddHouse()">Add House</button>

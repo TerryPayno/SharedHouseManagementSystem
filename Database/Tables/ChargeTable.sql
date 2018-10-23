@@ -8,6 +8,7 @@
     [IsPaying]  BIT          NULL,
     [Price]     FLOAT (53)   NULL,
     [ProductID] INT          NULL,
+	[PaidShare] BIT			 NULL,
     CONSTRAINT [PK_ChargeTable] PRIMARY KEY CLUSTERED ([ChargeID] ASC)
 );
 

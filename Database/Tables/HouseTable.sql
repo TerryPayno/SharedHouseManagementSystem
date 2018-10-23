@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[HouseTable] (
-    [HouseID]      INT          NOT NULL,
+    [HouseID]      INT          NOT NULL IDENTITY,
     [PostCode]     VARCHAR (50) NULL,
     [FLineAddress] VARCHAR (50) NULL,
     [HouseNum]     INT          NULL,

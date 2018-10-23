@@ -21,6 +21,11 @@
                 localStorage.setItem("HouseID", resp.data.HouseID);
             });
         }
+        vm.AddHouse = function () {
+            LoginFactory.AddNewHouse(vm.PostCode, vm.Street, vm.HouseNum).then(function (resp) {
+                alert(resp.data);
+            });
+        }
         vm.CreateAccount = function () {
             var User = {
                 Email: vm.username,
@@ -31,7 +36,7 @@
             }
             LoginFactory.CreateNewAccount(User).then(function (resp) {
                 alert(resp.data);
-            })
+            });
         }
     }
 })();

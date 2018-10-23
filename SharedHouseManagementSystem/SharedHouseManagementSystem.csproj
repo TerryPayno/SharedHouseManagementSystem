@@ -161,6 +161,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\NewHouseObj.cs" />
     <Compile Include="Processing\Hashing.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -297,6 +298,8 @@
     <Content Include="app\components\Rota\Rota.css" />
     <Content Include="app\components\Rota\Rota.html" />
     <Content Include="app\components\Rota\Rota.js" />
+    <Content Include="app\components\ShareToPay\ShareToPay.html" />
+    <Content Include="app\components\ShareToPay\ShareToPay.js" />
     <Content Include="app\components\toolbar\toolbar.html" />
     <Content Include="app\components\toolbar\toolbar.js" />
     <Content Include="app\components\UserBoughtProducts\UserBoughtProducts.html" />

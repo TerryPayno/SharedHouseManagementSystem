@@ -154,6 +154,35 @@ namespace SharedHouseManagementSystem.Controllers
 
             return "What the fuck am i doing :)";
         }
+        [HttpPost, Route("AddNewHouse")]
+        public int AddNewHouse(NewHouseObj HouseData)
+        {
+            
+
+            Database db = new Database();
+            SqlConnection myConnection = new SqlConnection();
+            myConnection = db.connect();
+
+            using (var command = new SqlCommand("spAddNewHouse", myConnection)
+            {
+                CommandType = CommandType.StoredProcedure
+
+            })
+            {
+                command.Parameters.Add(new SqlParameter("@PostCode", HouseData.PostCode));
+                command.Parameters.Add(new SqlParameter("@Street", HouseData.Street));
+                command.Parameters.Add(new SqlParameter("@HouseNum", HouseData.HouseNum));
+                myConnection.Open();
+                command.ExecuteNonQuery();
+            }
+
+            HouseData = myConnection.Query<NewHouseObj>("[spGetHouseID]", new { PostCode = HouseData.PostCode },
+                commandType: CommandType.StoredProcedure).SingleOrDefault();
+
+
+            return HouseData.HouseID;
+
+        }
 
     }
 }

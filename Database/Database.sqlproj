@@ -75,5 +75,7 @@
     <Build Include="Stored Procedures\spResetPasswordRequest.sql" />
     <Build Include="Tables\ResetPasswordRequestTable.sql" />
     <Build Include="Stored Procedures\spChangePassword.sql" />
+    <Build Include="Stored Procedures\spAddNewHouse.sql" />
+    <Build Include="Stored Procedures\spGetHouseID.sql" />
   </ItemGroup>
 </Project>

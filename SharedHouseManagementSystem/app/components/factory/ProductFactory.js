@@ -18,6 +18,13 @@
             return $http.post('api/Product/GetUserBoughtProducts', userInfo);
         }
 
+        ProductFactory.GetUserPaidShares = function (userData) {
+            var userInfo = {
+                UserID: userData
+            }
+            return $http.post('api/Product/GetUserPaidShares', userInfo);
+        }
+
         return ProductFactory;
     }
 })();
