@@ -44,6 +44,11 @@ baseApp.config(['$stateProvider', '$locationProvider', '$urlRouterProvider',
                 templateUrl: "app/components/Rota/Rota.html",
                 controller: "RotaCtrl",
                 controllerAs: 'vm'
+            }).state("PaidShare", {
+                url: '/PaidShare',
+                templateUrl: "app/components/PaidShare/PaidShare.html",
+                controller: "PaidShareCtrl",
+                controllerAs: 'vm'
             });
 
         $urlRouterProvider.otherwise('/');

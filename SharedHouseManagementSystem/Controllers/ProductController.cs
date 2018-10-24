@@ -16,25 +16,19 @@ namespace SharedHouseManagementSystem.Controllers
     public class ProductController : ApiController
     {
         
-        [HttpPost, Route("GetUserPaidShares")]
-        public string GetUserPaidShares(LoginReturn userInfo)
+        [HttpPost, Route("GetPaidShares")]
+        public IEnumerable<UserBoughtProductsData> GetPaidShares(LoginReturn userInfo)
         {
-            //Charges need to have a boolean value where when the charge for that Products is paid the boolean value for charge changes to true
-            //This then will need to be factored into whether the charge is put into the charges screen/table or wether the charge is put into
-            //the paid shares table. This then save me from creating a new table as this it pointless when it can be done through an extra feild.
-            //By just amending some of the code for adding a charge.
 
+            Database db = new Database();
+            SqlConnection myConnection = new SqlConnection();
+            myConnection = db.connect();
+            
+            IEnumerable<UserBoughtProductsData> PaidSharesList = myConnection.Query<UserBoughtProductsData>("spGetPaidShares", new { UserID = userInfo.UserID },
+                commandType: CommandType.StoredProcedure);
 
+            return PaidSharesList;
 
-
-            //Database db = new Database();
-            //SqlConnection myConnection = new SqlConnection();
-            //myConnection = db.connect();
-
-            //IEnumerable<> UserBoughtvar = myConnection.Query<>("", new { UserID = userInfo.UserID },
-            //   commandType: CommandType.StoredProcedure);
-
-            return "Yep";
         }
         [HttpPost, Route("CreateCharge")]
         public string CreateCharge(Charges charges)
@@ -44,7 +38,7 @@ namespace SharedHouseManagementSystem.Controllers
             Database db = new Database();
             SqlConnection myConnection = new SqlConnection();
             myConnection = db.connect();
-            using (var command = new SqlCommand("NEED NEW", myConnection)
+            using (var command = new SqlCommand("spAddProductsBought", myConnection)
             {
                 CommandType = CommandType.StoredProcedure
 
@@ -56,26 +50,27 @@ namespace SharedHouseManagementSystem.Controllers
                 command.Parameters.Add(new SqlParameter("@ProductGroup", charges.Product.ProductGroup));
                 command.Parameters.Add(new SqlParameter("@UserPaidFull", charges.UserWhoPaidDetails.UserID));
                 command.Parameters.Add(new SqlParameter("@HouseID", charges.UserWhoPaidDetails.HouseID));
-                command.Parameters.Add(new SqlParameter("@Name", charges.UserWhoPaidDetails.Name));
+                command.Parameters.Add(new SqlParameter("@Name", charges.UserWhoPaidDetails.UserName));
                 myConnection.Open();
                 command.ExecuteNonQuery();
             }
 
 
-
+            SqlConnection myConnection2 = new SqlConnection();
+            myConnection2 = db.connect();
             //Need to have a stored procedure here to return the id of the last entered record into the Products bought table.
-            int ProductID = myConnection.Query<int>("spGetLastProduct",
+            int ProductID = myConnection2.Query<int>("spGetLastProduct",
                 commandType: CommandType.StoredProcedure).Single();
+
             //List<ProductsBought> productList = DBProductsBought.ProductsBoughts.ToList();
 
 
             //This id would then be used in the below fuction that would add the charge for all housemates in the charge table.
-
-            var DBChargesTable = new SHMSChargeTableConnectionString();
-            var ChargesTableObj = new ChargeTable();
+            SqlConnection myConnection3 = new SqlConnection();
+            myConnection3 = db.connect();
 
             for (int i = 0; i < charges.HouseMates.Count; i++)
-                using (var command = new SqlCommand("NEED NEW", myConnection)
+                using (var command = new SqlCommand("spAddCharges", myConnection)
                 {
                     CommandType = CommandType.StoredProcedure
 
@@ -90,8 +85,8 @@ namespace SharedHouseManagementSystem.Controllers
                     command.Parameters.Add(new SqlParameter("@Price", (charges.Product.Price / (charges.HouseMates.Count + 1))));
                     command.Parameters.Add(new SqlParameter("@ProductID", ProductID));
                     command.Parameters.Add(new SqlParameter("@PaidShare", false));
-                    
-                    myConnection.Open();
+
+                    myConnection3.Open();
                     command.ExecuteNonQuery();
                 }
 

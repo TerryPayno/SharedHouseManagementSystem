@@ -289,6 +289,8 @@
     <Content Include="app\components\Login\Login.html" />
     <Content Include="app\components\Login\Login.js" />
     <Content Include="app\components\Login\LoginService.js" />
+    <Content Include="app\components\PaidShare\PaidShare.html" />
+    <Content Include="app\components\PaidShare\PaidShare.js" />
     <Content Include="app\components\PurchasedProduct\PurchasedProduct.html" />
     <Content Include="app\components\PurchasedProduct\PurchasedProduct.js" />
     <Content Include="app\components\ResetPassword\Resetpassword.js" />

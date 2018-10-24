@@ -16,7 +16,8 @@
        
         var User = {
             UserID: LoginService.getUser(),
-            HouseID: LoginService.getHouse()
+            HouseID: LoginService.getHouse(),
+            UserName: LoginService.getUserName()
         }
         
         vm.PrintStorage = function () {
@@ -53,7 +54,7 @@
         }
     
         function init() {
-            alert();
+
             UserFactory.GetHouseMates(User).then(function (resp) {
                 vm.HouseMates = [];
                 console.log(resp);

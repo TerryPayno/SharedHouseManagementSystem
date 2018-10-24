@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>ProductGroup</th>
+                    <th>Name</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+
+                <tr ng-repeat="(key, values) in vm.PaidShareList">
+                    <td>{{values.ProductID}}</td>
+                    <td>{{values.Quantity}}</td>
+                    <td>{{values.Price}}</td>
+                    <td>{{values.Description}}</td>
+                    <td>{{values.ProductGroup}}</td>
+                    <td>{{values.Name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

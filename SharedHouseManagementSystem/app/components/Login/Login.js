@@ -14,10 +14,11 @@
             var Credentails = {
                 Username: vm.username,
                 Password: vm.password
+                
             };
             LoginFactory.Login(Credentails).then(function (resp) {
                 alert(resp.data);
-                LoginService.setCachedUser(resp.data);
+                LoginService.setCachedUser(resp.data, vm.username);
                 localStorage.setItem("HouseID", resp.data.HouseID);
             });
         }

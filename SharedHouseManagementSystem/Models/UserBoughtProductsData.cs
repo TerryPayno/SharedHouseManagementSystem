@@ -15,5 +15,6 @@ namespace SharedHouseManagementSystem.Models
         public int UserPaidFull { get; set; }
         public int HouseID { get; set; }
         public string Name { get; set; }
+        public bool PaidShare { get; set; }
     }
 }

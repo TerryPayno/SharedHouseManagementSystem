@@ -77,5 +77,9 @@
     <Build Include="Stored Procedures\spChangePassword.sql" />
     <Build Include="Stored Procedures\spAddNewHouse.sql" />
     <Build Include="Stored Procedures\spGetHouseID.sql" />
+    <Build Include="Stored Procedures\spAddCharges.sql" />
+    <Build Include="Stored Procedures\spAddProductsBought.sql" />
+    <Build Include="Stored Procedures\spGetLastProduct_1.sql" />
+    <Build Include="Stored Procedures\spGetPaidShares.sql" />
   </ItemGroup>
 </Project>

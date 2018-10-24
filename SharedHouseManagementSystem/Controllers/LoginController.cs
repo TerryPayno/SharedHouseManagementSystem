@@ -12,6 +12,7 @@ using Dapper;
 using SharedHouseManagementSystem.Repository;
 using System.Net.Mail;
 using System.Text;
+using SharedHouseManagementSystem.app.Processing;
 
 namespace SharedHouseManagementSystem.Controllers
 {
@@ -19,34 +20,13 @@ namespace SharedHouseManagementSystem.Controllers
     public class LoginController : ApiController
     {
         [HttpPost, Route("Login")]
-        public LoginReturn Login(UserCredentials Credentials)
+        public string Login(UserCredentials Credentials)
         {
-            Database db = new Database();
-            SqlConnection myConnection = new SqlConnection();
-            myConnection = db.connect();
-            /* Fetch the stored value */
-            //string savedPasswordHash = DBContext.GetUser(u => u.UserName == user).Password;
-            var UsersDB = new SHMSUserDataConnectionString();
-            LoginReturn success = new LoginReturn();//
+            Hashing HashProcessing = new Hashing();
+            HashProcessing.newPassword(Credentials);
 
-            success = myConnection.Query<LoginReturn>("spGetHashedPassword", new { Email = Credentials.Username },
-                commandType: CommandType.StoredProcedure).SingleOrDefault();
-            //success = UsersDB.spGetHashedPassword(Credentials.Username);
-            /* Extract the bytes */
-            var test = success.Password;
-            byte[] hashBytes = Convert.FromBase64String(success.Password);
-            /* Get the salt */
-    
-            byte[] salt = new byte[16];
-            Array.Copy(hashBytes, 0, salt, 0, 16);
-            /* Compute the hash on the password the user entered */
-            var pbkdf2 = new Rfc2898DeriveBytes(Credentials.Password, salt, 10000);
-            byte[] hash = pbkdf2.GetBytes(20);
-            /* Compare the results */
-            for (int i = 0; i < 20; i++)
-                if (hashBytes[i + 16] != hash[i])
-                    throw new UnauthorizedAccessException();
-            return success; //For now I will need to return the user ID and So I know who has just logged in.
+
+            return "Test"; //For now I will need to return the user ID and So I know who has just logged in.
         }
         [HttpPost, Route("CreateNewAccount")]
         public string CreateNewAccount(Users user)

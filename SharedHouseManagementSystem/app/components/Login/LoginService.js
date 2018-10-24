@@ -11,6 +11,9 @@
     function LoginService( ) {
 
         var CachedUser;
+        function getUserName() {
+            return localStorage.getItem('UserName');
+        }
         function getHouse() {
             return localStorage.getItem("HouseID");
         }
@@ -20,16 +23,18 @@
                                // Need to decide whether to user a factory or go with some sort of local storage solution. The we can move onto the problem of what Dapper is going 
                                // to do with my data :D  
         }
-        function setCachedUser(data) {
+        function setCachedUser(data,username) {
             CachedUser = data;
             localStorage.setItem("UserID", data.UserID);
             localStorage.setItem("HouseID", data.HouseID);
+            localStorage.setItem("UserName", username);
         }
 
         return {
             setCachedUser: setCachedUser,
             getUser: getUser,
-            getHouse: getHouse
+            getHouse: getHouse,
+            getUserName: getUserName
         }
     }
 })();

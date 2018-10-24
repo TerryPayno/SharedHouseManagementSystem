@@ -18,11 +18,11 @@
             return $http.post('api/Product/GetUserBoughtProducts', userInfo);
         }
 
-        ProductFactory.GetUserPaidShares = function (userData) {
+        ProductFactory.GetPaidShares = function (userData) {
             var userInfo = {
-                UserID: userData
+                UserID: userData.UserID
             }
-            return $http.post('api/Product/GetUserPaidShares', userInfo);
+            return $http.post('api/Product/GetPaidShares', userInfo);
         }
 
         return ProductFactory;
