@@ -64,9 +64,10 @@ namespace SharedHouseManagementSystem.Controllers
 
 
             //Need to have a stored procedure here to return the id of the last entered record into the Products bought table.
-
+            int ProductID = myConnection.Query<int>("spGetLastProduct",
+                commandType: CommandType.StoredProcedure).Single();
             //List<ProductsBought> productList = DBProductsBought.ProductsBoughts.ToList();
-            //ProductTableobj.ProductID = productList.Last().ProductID;
+
 
             //This id would then be used in the below fuction that would add the charge for all housemates in the charge table.
 
@@ -74,20 +75,25 @@ namespace SharedHouseManagementSystem.Controllers
             var ChargesTableObj = new ChargeTable();
 
             for (int i = 0; i < charges.HouseMates.Count; i++)
-            {
-                ChargesTableObj.UserID = charges.HouseMates[i].UserID;
-                ChargesTableObj.FirstName = charges.HouseMates[i].FirstName;
-                ChargesTableObj.LastName = charges.HouseMates[i].LastName;
-                ChargesTableObj.Email = charges.HouseMates[i].Email;
-                ChargesTableObj.HouseID = charges.HouseMates[i].HouseID;
-                ChargesTableObj.IsPaying = charges.HouseMates[i].IsPaying;
-                ChargesTableObj.Price = (charges.Product.Price / (charges.HouseMates.Count + 1 ));
-                ChargesTableObj.ProductID = ProductTableobj.ProductID;
-                ChargesTableObj.PaidShare = false;
-                //Buzzing now I need to add to the database and make sure i'm passing the correct data.
-                DBChargesTable.ChargeTables.Add(ChargesTableObj);
-                DBChargesTable.SaveChanges();
-            };
+                using (var command = new SqlCommand("NEED NEW", myConnection)
+                {
+                    CommandType = CommandType.StoredProcedure
+
+                })
+                {
+                    command.Parameters.Add(new SqlParameter("@UserID", charges.HouseMates[i].UserID));
+                    command.Parameters.Add(new SqlParameter("@FirstName", charges.HouseMates[i].FirstName));
+                    command.Parameters.Add(new SqlParameter("@LastName", charges.HouseMates[i].LastName));
+                    command.Parameters.Add(new SqlParameter("@Email", charges.HouseMates[i].Email));
+                    command.Parameters.Add(new SqlParameter("@HouseID", charges.HouseMates[i].HouseID));
+                    command.Parameters.Add(new SqlParameter("@IsPaying", charges.HouseMates[i].IsPaying));
+                    command.Parameters.Add(new SqlParameter("@Price", (charges.Product.Price / (charges.HouseMates.Count + 1))));
+                    command.Parameters.Add(new SqlParameter("@ProductID", ProductID));
+                    command.Parameters.Add(new SqlParameter("@PaidShare", false));
+                    
+                    myConnection.Open();
+                    command.ExecuteNonQuery();
+                }
 
             return "Yep";
         }
