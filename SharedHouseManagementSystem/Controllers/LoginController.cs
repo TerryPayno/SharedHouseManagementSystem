@@ -22,8 +22,9 @@ namespace SharedHouseManagementSystem.Controllers
         [HttpPost, Route("Login")]
         public string Login(UserCredentials Credentials)
         {
+
             Hashing HashProcessing = new Hashing();
-            HashProcessing.newPassword(Credentials);
+            HashProcessing.current(Credentials);
 
 
             return "Test"; //For now I will need to return the user ID and So I know who has just logged in.

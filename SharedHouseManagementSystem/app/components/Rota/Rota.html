@@ -32,34 +32,37 @@
                 <h1>Sun</h1>
             </div>
         </div>
+
+        
         <div ng-repeat="x in vm.RotaRows" class="row" style="width:100%; height:25%; border-bottom: groove;">
-            <div class="col-1" style="background-color:aqua" contenteditable="{{vm.Editable}}">
-                #Time#
-            </div>
-            <div class="col" style="background-color:aliceblue" contenteditable="{{vm.Editable}}">
-                Test
-            </div>
-            <div class="col" style="background-color:antiquewhite" contenteditable="{{vm.Editable}}">
-                Test
-            </div>
-            <div class="col" style="background-color:aquamarine" contenteditable="{{vm.Editable}}">
-                Test
-            </div>
-            <div class="col" style="background-color:azure" contenteditable="{{vm.Editable}}">
-                Test
-            </div>
-            <div class="col" style="background-color:cadetblue" contenteditable="{{vm.Editable}}">
-                Test
-            </div>
-            <div class="col" style="background-color:cyan" contenteditable="{{vm.Editable}}">
-                Test
-            </div>
-            <div class="col" style="background-color:darkturquoise" contenteditable="{{vm.Editable}}">
-                Test
-            </div>
+                <div class="col-1" style="background-color:aqua">
+                    <input ng-model="vm.RotaRows[$index].Time" ng-disabled="vm.Editable"/>
+                </div>
+                <div class="col" style="background-color:aliceblue">
+                    <input ng-model="vm.RotaRows[$index].Monday" ng-disabled="vm.Editable"/>
+                </div>
+                <div class="col" style="background-color:antiquewhite">
+                    <input ng-model="vm.RotaRows[$index].Tuesday" ng-disabled="vm.Editable"/>
+                </div>
+                <div class="col" style="background-color:aquamarine">
+                    <input ng-model="vm.RotaRows[$index].Wednesday" ng-disabled="vm.Editable"/>
+                </div>
+                <div class="col" style="background-color:azure">
+                    <input ng-model="vm.RotaRows[$index].Thursday" ng-disabled="vm.Editable"/>
+                </div>
+                <div class="col" style="background-color:cadetblue">
+                    <input ng-model="vm.RotaRows[$index].Friday" ng-disabled="vm.Editable"/>
+                </div>
+                <div class="col" style="background-color:cyan">
+                    <input ng-model="vm.RotaRows[$index].Saturday" ng-disabled="vm.Editable"/>
+                </div>
+                <div class="col" style="background-color:darkturquoise">
+                    <input ng-model="vm.RotaRows[$index].Sunday" ng-disabled="vm.Editable"/>
+                </div>
+                <button ng-click="vm.EnableEditing($index)">Edit</button>
         </div>
     </div>
     <button ng-click="vm.AddNewRow()">Add New Time</button>
-    <button ng-click="vm.EnableEditing()">Edit</button>
+   
 </body>
 </html>

@@ -13,7 +13,7 @@ namespace SharedHouseManagementSystem.app.Processing
 {
     public class Hashing
     {
-        public string newPassword(UserCredentials Credentials)
+        public string current(UserCredentials Credentials)
         {
 
 

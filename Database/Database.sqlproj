@@ -81,5 +81,8 @@
     <Build Include="Stored Procedures\spAddProductsBought.sql" />
     <Build Include="Stored Procedures\spGetLastProduct_1.sql" />
     <Build Include="Stored Procedures\spGetPaidShares.sql" />
+    <Build Include="Tables\RotaDataTable.sql" />
+    <Build Include="Stored Procedures\spSaveNewRotaData.sql" />
+    <Build Include="Stored Procedures\spGetRotaData.sql" />
   </ItemGroup>
 </Project>
